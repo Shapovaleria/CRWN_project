@@ -1,0 +1,21 @@
+.slick-dots li.slick-active button:before {
+  color: #7b777c;
+}
+
+.slick-next,
+.slick-prev {
+  right: -25px;
+
+  &:before {
+    color: #4c4c4d;
+  }
+}
+
+.item{
+ margin: 0 auto;
+ max-width: 95%;
+}
+
+.slide {
+  max-height: 400px;
+}
