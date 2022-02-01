@@ -2,30 +2,28 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { addItem } from '../../redux/cart/cart.actions';
-import CustomButton from '../custom-button/custom-button.component';
-import { useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom';
+import { StyledCollectionItem, StyledCustomButtonInsideItem, StyledFooter, StyledImage, StyledName, StyledPrice } from './collection-item.style'
 
-import './collection-item.style.scss'
+// import './collection-item.style.scss'
 
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
   const navigate = useNavigate();
   return (
-    <div className='collection-item' >
-      <div
-        className='image'
+    <StyledCollectionItem >
+      <StyledImage
         onClick={() => navigate(`/details/${item.id}`)}
         style={{
           backgroundImage: `url(${imageUrl})`
         }}
       />
-      <div className='collection-footer'>
-        <span className='name'>{name}</span>
-        <span className='price'>{price}</span>
-      </div>
-      <CustomButton onClick={() => addItem(item)} inverted> Add to cart</CustomButton>
-    </div>
-    
+      <StyledFooter>
+        <StyledName>{name}</StyledName>
+        <StyledPrice>{price}</StyledPrice>
+      </StyledFooter>
+      <StyledCustomButtonInsideItem onClick={() => addItem(item)} inverted> Add to cart</StyledCustomButtonInsideItem>
+    </StyledCollectionItem>
   )
 }
 
