@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { useParams } from 'react-router-dom';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 import { selectCollections } from '../../redux/shop/shop.selectors';
 import './collection.style.scss';
 
 
-// получаю коллекцию из параметра адресной строки (из Shop) и ищу по всем коллекциям по этому ключу
-const CollectionPage = ({ params, collections} ) => {
-  const collection = collections[params["*"]];
+const CollectionPage = ({ collections } ) => {
+  const paramsId = useParams().collectionId;
+  const collection = collections ? collections[paramsId] : null;
   const {title, items} = collection;
   return (
     <div className='collection-page'>

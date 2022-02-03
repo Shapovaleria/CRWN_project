@@ -12,8 +12,8 @@ import ItemDetailsPage from './pages/item-details/item-details.component';
 
 import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/user/user.actions'
-import { selectCurrentUser} from './redux/user/users.selector'
+import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser} from './redux/user/users.selector';
 
 class App extends React.Component {
 
@@ -32,7 +32,7 @@ class App extends React.Component {
           })
         });
       }
-      setCurrentUser( userAuth )
+      setCurrentUser( userAuth );
     });
   }
 
