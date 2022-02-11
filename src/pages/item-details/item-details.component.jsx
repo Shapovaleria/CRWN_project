@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CustomButton from '../../components/custom-button/custom-button.component';
 import { addItem } from '../../redux/cart/cart.actions';
@@ -9,8 +9,10 @@ import SliderOfPhotos from '../../components/slider/slider.component';
 
 import './item-details.style.scss'
 
-const ItemDetailsPage = ({ collections, addItem}) => {
+const ItemDetailsPage = () => {
+  const dispatch = useDispatch();
   const itemId = useParams().itemId;
+  const collections = useSelector(selectCollectionsForPreview);
 
   const selectItem = () => {
     for (let collection of collections) {
@@ -39,22 +41,13 @@ const ItemDetailsPage = ({ collections, addItem}) => {
             </p>)
         }
         <div className='description-footer'>
-          <CustomButton onClick={() =>  addItem(itemToShow)}> Add to Cart</CustomButton>
+          <CustomButton onClick={() => dispatch(addItem(itemToShow))}> Add to Cart</CustomButton>
           <span className='price'>Price: ${price}</span>
         </div>
       </div>
-    
     </div>
-    
   )
 };
 
-const mapStateToProps = state => ({
-  collections: selectCollectionsForPreview (state)
-});
 
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemDetailsPage)
+export default ItemDetailsPage

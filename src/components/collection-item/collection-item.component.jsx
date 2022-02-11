@@ -13,7 +13,7 @@ const CollectionItem = ({ item, addItem }) => {
   return (
     <StyledCollectionItem >
       <StyledImage
-        onClick={() => navigate(`/details/${item.id}`)}
+        onClick={() => navigate(`/shop/items/${item.id}`)}
         style={{
           backgroundImage: `url(${imageUrl})`
         }}
