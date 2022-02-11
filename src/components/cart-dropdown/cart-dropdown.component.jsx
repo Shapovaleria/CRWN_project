@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
 import CustomButton from '../custom-button/custom-button.component';
@@ -9,8 +9,10 @@ import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
 import './cart-dropdown.style.scss'
 
-const CartDropdown = ({ cartItems, dispatch }) => {
-  const navigate = useNavigate()
+const CartDropdown = () => {
+  const navigate = useNavigate();
+  const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
   return (
     <div className='cart-dropdown'>
       <div className='cart-items'>
@@ -33,10 +35,4 @@ const CartDropdown = ({ cartItems, dispatch }) => {
   )
 };
 
-const mapStateToProps = (state) => ({
-  cartItems: selectCartItems(state)
-})
-
-export default connect(mapStateToProps)(CartDropdown);
-
-// можно использовать prop dispatch вместо mapDispatchToProps, когда нет второго параметра в функции connect
+export default CartDropdown;

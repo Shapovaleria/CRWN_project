@@ -49,5 +49,4 @@ const ItemDetailsPage = () => {
   )
 };
 
-
-export default ItemDetailsPage
+export default ItemDetailsPage;

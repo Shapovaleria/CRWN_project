@@ -23,11 +23,11 @@ const ShopPage = () => {
             element={<CollectionsOverviewContainer />}
           />
           <Route
-            path={`/:collectionId`}
+            path={`:collectionId`}
             element={<CollectionPageContainer />}
           />
           <Route 
-          path={`/items/:itemId`}
+          path={`items/:itemId`}
           element = {<ItemDetailsContainer />}
           />
         </Routes>

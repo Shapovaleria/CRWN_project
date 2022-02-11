@@ -1,13 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { addItem } from '../../redux/cart/cart.actions';
 import { useNavigate} from 'react-router-dom';
-import { StyledCollectionItem, StyledCustomButtonInsideItem, StyledFooter, StyledImage, StyledName, StyledPrice } from './collection-item.style'
+import { 
+  StyledCollectionItem, 
+  StyledCustomButtonInsideItem, 
+  StyledFooter, 
+  StyledImage, 
+  StyledName, 
+  StyledPrice 
+} from './collection-item.style'
 
 // import './collection-item.style.scss'
 
-const CollectionItem = ({ item, addItem }) => {
+const CollectionItem = ({ item }) => {
+  const dispatch = useDispatch();
   const { name, price, imageUrl } = item;
   const navigate = useNavigate();
   return (
@@ -22,16 +30,9 @@ const CollectionItem = ({ item, addItem }) => {
         <StyledName>{name}</StyledName>
         <StyledPrice>{price}</StyledPrice>
       </StyledFooter>
-      <StyledCustomButtonInsideItem onClick={() => addItem(item)} inverted> Add to cart</StyledCustomButtonInsideItem>
+      <StyledCustomButtonInsideItem onClick={() => dispatch(addItem(item))} inverted> Add to cart</StyledCustomButtonInsideItem>
     </StyledCollectionItem>
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item))
-})
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(CollectionItem)
+export default CollectionItem;

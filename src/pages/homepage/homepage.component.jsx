@@ -10,4 +10,4 @@ const HomePage = () => (
     </StyledHomePage>
 );
 
-export default HomePage
+export default HomePage;
