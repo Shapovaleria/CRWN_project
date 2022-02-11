@@ -14,6 +14,17 @@ export const selectCollectionsForPreview = createSelector(
   : []
 );
 
+export const selectItem = (itemId) => createSelector(
+  [selectCollectionsForPreview],
+  collections => {
+    for (let collection of collections) {
+      for (let item of collection.items) {
+        if (+item.id === +itemId) return item
+      }
+    }
+  }
+);
+
 export const selectIsCollectionFetching = createSelector(
   [selectShop],
   shop => shop.isFetching
